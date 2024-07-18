@@ -30,7 +30,7 @@ jobs:
     needs:
       - analyzing
       - testing
-      - testing-report
+#      - testing-report
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
