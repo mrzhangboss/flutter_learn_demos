@@ -1,4 +1,3 @@
-# Test
+# Released v1.0.0+0
 
-# Test
-docs/release.md
+Complete Github Auto Package version
