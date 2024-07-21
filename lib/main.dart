@@ -3,41 +3,42 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
+import 'minimal_shop/main.dart';
 import 'nike_shop/main.dart';
 import 'todo_demo/main.dart';
+
+void clear() {
+  Hive.box("config").clear();
+}
 
 Future<void> main() async {
   await Hive.initFlutter();
   var box = await Hive.openBox("config");
+
   var app = box.get("app");
-  if (app == null) {
-    runApp(const MyApp());
+  if (app == 'nike') {
+    clear();
+    runApp(const MyNikeShopApp());
   } else if (app == 'todo') {
-    Hive.box("config").clear();
+    clear();
     await Hive.initFlutter();
     await Hive.openBox("myBox");
     runApp(const MyToDoApp());
+  } else if (app == 'theme') {
+    clear();
+    runApp(const MyMinimalShopApp());
   } else {
-    Hive.box("config").clear();
-
-    runApp(const MyNikeShopApp());
+    runApp(const MyApp());
   }
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // start new App
-  Future<void> startToDo() async {
-    // 使用SystemChannels平台通道重启应用
-    startApp('todo');
-  }
-
   Future<void> startApp(String name) async {
     // 使用SystemChannels平台通道重启应用
     Hive.box("config").put('app', name);
     await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-    // 启动新的 runApp
   }
 
   // This widget is the root of your application.
@@ -83,6 +84,14 @@ class MyApp extends StatelessWidget {
                       title: Text("Nike Shoe Shop Demo"),
                       subtitle: Text("A simple shop app"),
                       leading: Icon(Icons.shop),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => startApp('theme'),
+                    child: const ListTile(
+                      title: Text("Mini them Demo"),
+                      subtitle: Text("A simple theme app"),
+                      leading: Icon(Icons.dark_mode),
                     ),
                   )
                 ],
