@@ -6,11 +6,11 @@ import 'pages/home_page.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox("myBox");
-  runApp(const MyApp());
+  runApp(const MyToDoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyToDoApp extends StatelessWidget {
+  const MyToDoApp({super.key});
 
   // This widget is the root of your application.
   @override
