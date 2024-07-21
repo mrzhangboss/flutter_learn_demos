@@ -98,7 +98,7 @@ jobs:
           token: ${{ secrets.APP_RELEASE_TOKEN }}
       - run: npm install -g appdmg
       - name: Build DMP
-        run: appdmg ./installers/dmg_creator/config.json ./build/macos/Build/Products/Release/mhabit.dmg
+        run: appdmg ./installers/dmg_creator/config.json ./build/macos/Build/Products/Release/macos.dmg
       - name: Released - MacOS
         uses: ncipollo/release-action@v1
         with:
@@ -107,5 +107,5 @@ jobs:
           omitDraftDuringUpdate: true
           omitPrereleaseDuringUpdate: true
           artifacts: >
-            build/macos/Build/Products/Release/mhabit.dmg
+            build/macos/Build/Products/Release/macos.dmg
           token: ${{ secrets.APP_RELEASE_TOKEN }}
