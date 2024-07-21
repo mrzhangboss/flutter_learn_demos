@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_demos/minimal_shop/theme/theme_provoider.dart';
 import 'package:provider/provider.dart';
 
+import '../../utils.dart';
 import 'my_custom_drawer_header.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -86,9 +87,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, "/shop");
-                }),
+                onTap: exitApp),
           ),
 
           // shop

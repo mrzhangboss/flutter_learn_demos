@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:learn_demos/utils.dart';
 
 import 'minimal_shop/main.dart';
 import 'nike_shop/main.dart';
 import 'todo_demo/main.dart';
+import 'weather_demo/main.dart';
 
 void clear() {
   Hive.box("config").clear();
@@ -27,6 +29,9 @@ Future<void> main() async {
   } else if (app == 'theme') {
     clear();
     runApp(const MyMinimalShopApp());
+  } else if (app == 'weather') {
+    clear();
+    runApp(const WeatherApp());
   } else {
     runApp(const MyApp());
   }
@@ -38,7 +43,7 @@ class MyApp extends StatelessWidget {
   Future<void> startApp(String name) async {
     // 使用SystemChannels平台通道重启应用
     Hive.box("config").put('app', name);
-    await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    exitApp();
   }
 
   // This widget is the root of your application.
@@ -92,6 +97,14 @@ class MyApp extends StatelessWidget {
                       title: Text("Mini them Demo"),
                       subtitle: Text("A simple theme app"),
                       leading: Icon(Icons.dark_mode),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => startApp('weather'),
+                    child: const ListTile(
+                      title: Text("Mini weather app Demo"),
+                      subtitle: Text("A simple weather app"),
+                      leading: Icon(Icons.sunny),
                     ),
                   )
                 ],

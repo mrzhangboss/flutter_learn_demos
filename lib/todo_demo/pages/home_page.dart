@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utils.dart';
 import '../database/todo_database.dart';
 import '../utils/dialog_box.dart';
 import '../utils/todo_tile.dart';
@@ -12,14 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final ToDoDatabase db = ToDoDatabase();
 
   @override
   void initState() {
-      db.loadData();
+    db.loadData();
   }
-
 
   // on task change
   void changeTaskState(bool? value, int index) {
@@ -58,7 +57,6 @@ class _HomePageState extends State<HomePage> {
       db.todosList.removeAt(index);
     });
     db.updateDatabase();
-
   }
 
   @override
@@ -66,6 +64,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('ToDo Demo'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                exitApp();
+              },
+              icon: const Icon(Icons.logout),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: onCreateTask,

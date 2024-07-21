@@ -1,16 +1,26 @@
 # learn_demos
 
-A new Flutter project.
 
-## Getting Started
+1.  [TODO Demo](lib/todo_demo/main.dart)
 
-This project is a starting point for a Flutter application.
+![todo](images/todo.png)
 
-A few resources to get you started if this is your first Flutter project:
+2.  [Nick Shop Demo](lib/nike_shop/main.dart)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![nike main](images/nike1.png)
+![nike list](images/nike2.png)
+![nike cart](images/nike3.png)
+![nike drawer](images/nike4.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+3. [minimal theme Demo](lib/minimal_shop/main.dart)
+
+![light theme](images/light.png)
+![dark theme](images/dark.png)
+
+
+4. [Mini weather app Demo](lib/weather_demo/main.dart)
+
+
+![weather app](images/weather.png)
+

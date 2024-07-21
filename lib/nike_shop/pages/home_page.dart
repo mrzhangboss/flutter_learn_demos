@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utils.dart';
 import '../components/bottom_nav_bar.dart';
 import '../components/drawer_item.dart';
 import 'cart_page.dart';
@@ -85,10 +86,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child:
-                  MyDrawItem(icon: Icons.logout, text: "Logout", onTap: () {}),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+              child: MyDrawItem(
+                  icon: Icons.logout, text: "Logout", onTap: exitApp),
             ),
           ],
         ),
